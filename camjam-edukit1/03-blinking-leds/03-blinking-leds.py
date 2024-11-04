@@ -5,15 +5,15 @@ green = LED(24)
 yellow = LED(23)
 red = LED(18)
 
-while True:
-    green.on()
-    yellow.on()
-    red.on()
+lights = [green, yellow, red]
 
+while True:
+    for light in lights: 
+        light.on()
+    
     time.sleep(1)
 
-    green.off()
-    yellow.off()
-    red.off()
-
+    for light in lights:
+        light.off()
+    
     time.sleep(1)
