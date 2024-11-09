@@ -1,8 +1,8 @@
 import os
 import time
-from gpiozero import Buzzer, LED
+from gpiozero import Buzzer, LED, Button
 
-class morsecode_generator():
+class MorsecodeGenerator():
     def __init__(self, buzzer_pin:int, led_pin:int):
         self.buzzer = Buzzer(buzzer_pin)
         self.led = LED(led_pin)
@@ -86,8 +86,34 @@ class morsecode_generator():
                 print("Symbol unsupported, skipped")
         print("Message done")
 
+
+class InteractiveMorsecode():
+    def __init__(self, buzzer_pin:int, led_pin:int, button_pin:int):
+        self.buzzer = Buzzer(buzzer_pin)
+        self.led = LED(led_pin)
+        self.button = Button(button_pin)
+        self.unit = 0.2
+
+    def start(self):
+        while True:
+            if (self.button.is_pressed):
+                os.system("clear")
+                print("Button is pressed")
+                self.led.on()
+                self.buzzer.on()
+                time.sleep(self.unit)
+            else:
+                os.system("clear")
+                print("Button not pressed")
+                self.led.off()
+                self.buzzer.off()
+                time.sleep(self.unit)
+
 def main():
-    moresecode = morsecode_generator(22, 18)
-    message = moresecode.message()
-    moresecode.play(message)
+    morsecode = MorsecodeGenerator(22, 18)
+    message = morsecode.message()
+    morsecode.play(message)
+    
+    i_morsecode = InteractiveMorsecode(22, 18, 25)
+    i_morsecode.start()
 main()
