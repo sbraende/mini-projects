@@ -10,7 +10,7 @@ class morsecode_generator():
         self.unit_dot = self.unit
         self.unit_dash = self.unit * 3
         self.space_between_parts_letters = self.unit
-        self.space_between_letter = self.unit * 3
+        self.space_between_letters = self.unit * 3
         self.space_words = self.unit * 7
 
         self.morsecode_table = {
@@ -71,18 +71,17 @@ class morsecode_generator():
 
     def play(self, message):
         for symbol in message:
-            if symbol == " ":
-                print("there is a space here")
-                time.sleep(self.space_words)
-            elif symbol in self.morsecode_table:
+            if symbol in self.morsecode_table:
+                time.sleep(self.space_between_letters)
                 for value in self.morsecode_table[symbol]:
                     if value == "dot":
                         self.dot()
                     elif value == "dash":
                         self.dash()
-                    else:
-                        print("Something has gone wrong...")
-                    time.sleep(self.space_between_letter)
+                    time.sleep(self.space_between_parts_letters)
+            elif symbol == " ":
+                print("there is a space here")
+                time.sleep(self.space_words)
             else:
                 print("Symbol unsupported, skipped")
         print("Message done")
@@ -92,5 +91,3 @@ def main():
     message = moresecode.message()
     moresecode.play(message)
 main()
-
-
