@@ -15,7 +15,7 @@ class MorsecodeGenerator():
 
         self.morsecode_table = {
             "A": ["dot", "dash"],
-            "B": ["dash", "dot", "dot"],
+            "B": ["dash", "dot", "dot", "dot"],
             "C": ["dash", "dot", "dash", "dot"],
             "D": ["dash", "dot", "dot"],
             "E": ["dot"],
