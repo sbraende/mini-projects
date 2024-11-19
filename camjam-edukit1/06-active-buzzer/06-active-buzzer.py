@@ -110,10 +110,10 @@ class InteractiveMorsecode():
                 time.sleep(self.unit)
 
 def main():
-    morsecode = MorsecodeGenerator(22, 18)
-    message = morsecode.message()
-    morsecode.play(message)
-    
+    # morsecode = MorsecodeGenerator(22, 18)
+    # message = morsecode.message()
+    # morsecode.play(message)
+
     i_morsecode = InteractiveMorsecode(22, 18, 25)
     i_morsecode.start()
 main()
